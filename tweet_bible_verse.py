@@ -66,35 +66,39 @@ totalVersesRetrieved = 0
 percentOfVersesLessThan140Chars = 0
 
 while True:
-    verse = randomVerse()
-    totalVersesRetrieved += 1
-    verseLen = len(verse)
-    logging.debug('verse is: ' + verse)
-    logging.debug('Verse length = ' + str(verseLen))
-    if verseLen <= 140:
-        api.update_status(verse)
-        totalVersesLessThan140Chars += 1
-        totalVersesSent += 1
-        hashTagCount = len(re.findall("#", verse))
-        if(hashTagCount > 0):
-            hashTaggedVerses += 1
-            logging.debug('New verse has hashTags. count = ' + str(hashTagCount))
+    try:
+        verse = randomVerse()
+        totalVersesRetrieved += 1
+        verseLen = len(verse)
+        logging.debug('verse is: ' + verse)
+        logging.debug('Verse length = ' + str(verseLen))
+        if verseLen <= 140:
+            api.update_status(verse)
+            totalVersesLessThan140Chars += 1
+            totalVersesSent += 1
+            hashTagCount = len(re.findall("#", verse))
+            if(hashTagCount > 0):
+                hashTaggedVerses += 1
+                logging.debug('New verse has hashTags. count = ' + str(hashTagCount))
+            else:
+                logging.debug('New verse does not have hashTags!!!')
+
+            #Get the statistics for how many verses were < 140 chars
+            percentOfVersesLessThan140Chars = (totalVersesLessThan140Chars/float(totalVersesRetrieved)) * 100
+            logging.info(str(totalVersesLessThan140Chars) + ' out of ' + str(totalVersesRetrieved) + ' verses are < 140 chars = ' +
+                         "{:5.2f}".format(percentOfVersesLessThan140Chars) + '%')
+
+            #Get the statistics for how many verse < 140 chars had hash tags
+            percentOfhashTaggedVerses = (hashTaggedVerses/float(totalVersesSent)) * 100
+            logging.info(str(hashTaggedVerses) + ' out of ' + str(totalVersesSent) + ' verses are hash tagged = ' +
+                         "{:5.2f}".format(percentOfhashTaggedVerses) + '%')
+
+            #Get a random sleep time between a min and max seconds
+            sleepTime = getRandomSleepTime(300,1200)
+            logging.info('Next tweet to be sent in ' + str(sleepTime) + ' seconds')
+            time.sleep(sleepTime)
         else:
-            logging.debug('New verse does not have hashTags!!!')
-
-        #Get the statistics for how many verses were < 140 chars
-        percentOfVersesLessThan140Chars = (totalVersesLessThan140Chars/float(totalVersesRetrieved)) * 100
-        logging.info(str(totalVersesLessThan140Chars) + ' out of ' + str(totalVersesRetrieved) + ' verses are < 140 chars = ' +
-                     "{:5.2f}".format(percentOfVersesLessThan140Chars) + '%')
-
-        #Get the statistics for how many verse < 140 chars had hash tags
-        percentOfhashTaggedVerses = (hashTaggedVerses/float(totalVersesSent)) * 100
-        logging.info(str(hashTaggedVerses) + ' out of ' + str(totalVersesSent) + ' verses are hash tagged = ' +
-                     "{:5.2f}".format(percentOfhashTaggedVerses) + '%')
-
-        #Get a random sleep time between a min and max seconds
-        sleepTime = getRandomSleepTime(300,1200)
-        logging.info('Next tweet to be sent in ' + str(sleepTime) + ' seconds')
-        time.sleep(sleepTime)
-    else:
-        logging.debug('Tweet is ' + str(verseLen) + ' characters and is too long!!!')
+            logging.debug('Tweet is ' + str(verseLen) + ' characters and is too long!!!')
+    except Exception, e:
+        logging.error('exception: ' + str(e))
+        time.sleep(60) # sleep for 60 seconds on an error

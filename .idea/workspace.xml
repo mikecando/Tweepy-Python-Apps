@@ -2,8 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="80833216-8cac-4900-8115-4263a76cc025" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tweet_bible_verse.log" afterPath="$PROJECT_DIR$/tweet_bible_verse.log" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gitignore" afterPath="$PROJECT_DIR$/.gitignore" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tweet_bible_verse.py" afterPath="$PROJECT_DIR$/tweet_bible_verse.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="Tweepy-Python-Apps.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -49,7 +50,7 @@
       <file leaf-file-name="tweet_bible_verse.py" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/tweet_bible_verse.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="85" column="39" selection-start="3644" selection-end="3644" vertical-scroll-proportion="0.2264151" vertical-offset="1191" max-vertical-offset="1575">
+            <state line="93" column="37" selection-start="4321" selection-end="4321" vertical-scroll-proportion="0.83827496" vertical-offset="1084" max-vertical-offset="1650">
               <folding>
                 <element signature="e#0#27#0" expanded="true" />
               </folding>
@@ -428,7 +429,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/tweet_bible_verse.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="85" column="39" selection-start="3644" selection-end="3644" vertical-scroll-proportion="0.2264151" vertical-offset="1191" max-vertical-offset="1575">
+        <state line="93" column="37" selection-start="4321" selection-end="4321" vertical-scroll-proportion="0.83827496" vertical-offset="1084" max-vertical-offset="1650">
           <folding>
             <element signature="e#0#27#0" expanded="true" />
           </folding>
