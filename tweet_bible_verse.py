@@ -81,14 +81,20 @@ while True:
             logging.debug('New verse has hashTags. count = ' + str(hashTagCount))
         else:
             logging.debug('New verse does not have hashTags!!!')
-        percentOfhashTaggedVerses = (hashTaggedVerses/totalVersesSent) * 100
-        logging.info(str(totalVersesLessThan140Chars) + ' out of ' + str(totalVersesRetrieved) + ' are < 140 chars = ' +
+
+        #Get the statistics for how many verses were < 140 chars
+        percentOfVersesLessThan140Chars = (totalVersesLessThan140Chars/float(totalVersesRetrieved)) * 100
+        logging.info(str(totalVersesLessThan140Chars) + ' out of ' + str(totalVersesRetrieved) + ' verses are < 140 chars = ' +
+                     "{:5.2f}".format(percentOfVersesLessThan140Chars) + '%')
+
+        #Get the statistics for how many verse < 140 chars had hash tags
+        percentOfhashTaggedVerses = (hashTaggedVerses/float(totalVersesSent)) * 100
+        logging.info(str(hashTaggedVerses) + ' out of ' + str(totalVersesSent) + ' verses are hash tagged = ' +
                      "{:5.2f}".format(percentOfhashTaggedVerses) + '%')
-        percentOfVersesLessThan140Chars = (totalVersesLessThan140Chars/totalVersesRetrieved) * 100
-        logging.info(str(hashTaggedVerses) + ' out of ' + str(totalVersesSent) + ' are hash tagged = ' +
-                     "{:5.2f}".format(percentOfhashTaggedVerses) + '%')
+
+        #Get a random sleep time between a min and max seconds
         sleepTime = getRandomSleepTime(300,1200)
         logging.info('Next tweet to be sent in ' + str(sleepTime) + ' seconds')
-        time.sleep(sleepTime)#Tweet every 15 minutes
+        time.sleep(sleepTime)
     else:
-        logging.debug('Tweet is ' + str(verseLen) + 'characters and is too long!!!')
+        logging.debug('Tweet is ' + str(verseLen) + ' characters and is too long!!!')
