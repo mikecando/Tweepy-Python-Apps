@@ -2,8 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="80833216-8cac-4900-8115-4263a76cc025" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gitignore" afterPath="$PROJECT_DIR$/.gitignore" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tweet_bible_verse.py" afterPath="$PROJECT_DIR$/tweet_bible_verse.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/retweet.py" afterPath="$PROJECT_DIR$/retweet.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="Tweepy-Python-Apps.iws" />
@@ -38,19 +37,19 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="retweet.py" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="retweet.py" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/retweet.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="38" column="24" selection-start="1196" selection-end="1196" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1290">
+            <state line="9" column="19" selection-start="148" selection-end="148" vertical-scroll-proportion="0.2556818" vertical-offset="45" max-vertical-offset="885">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="tweet_bible_verse.py" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="tweet_bible_verse.py" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/tweet_bible_verse.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="93" column="37" selection-start="4321" selection-end="4321" vertical-scroll-proportion="0.83827496" vertical-offset="1084" max-vertical-offset="1650">
+            <state line="12" column="0" selection-start="300" selection-end="350" vertical-scroll-proportion="-5.142857" vertical-offset="0" max-vertical-offset="1650">
               <folding>
                 <element signature="e#0#27#0" expanded="true" />
               </folding>
@@ -61,7 +60,7 @@
       <file leaf-file-name="tweetbot.py" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/tweetbot.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="23" column="0" selection-start="646" selection-end="732" vertical-scroll-proportion="0.0" vertical-offset="61" max-vertical-offset="480">
+            <state line="23" column="0" selection-start="646" selection-end="732" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="480">
               <folding>
                 <element signature="e#47#71#0" expanded="true" />
               </folding>
@@ -93,9 +92,9 @@
       <list>
         <option value="$PROJECT_DIR$/keys.config" />
         <option value="$PROJECT_DIR$/stream_keyword.py" />
-        <option value="$PROJECT_DIR$/retweet.py" />
         <option value="$PROJECT_DIR$/bible_verse.py" />
         <option value="$PROJECT_DIR$/tweet_bible_verse.py" />
+        <option value="$PROJECT_DIR$/retweet.py" />
       </list>
     </option>
   </component>
@@ -157,7 +156,7 @@
   <component name="PropertiesComponent">
     <property name="recentsLimit" value="5" />
   </component>
-  <component name="RunManager" selected="Python.bible_verse">
+  <component name="RunManager" selected="Python.retweet">
     <configuration default="false" name="stream_keyword" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -340,8 +339,8 @@
     </list>
     <recent_temporary>
       <list size="3">
-        <item index="0" class="java.lang.String" itemvalue="Python.bible_verse" />
-        <item index="1" class="java.lang.String" itemvalue="Python.retweet" />
+        <item index="0" class="java.lang.String" itemvalue="Python.retweet" />
+        <item index="1" class="java.lang.String" itemvalue="Python.bible_verse" />
         <item index="2" class="java.lang.String" itemvalue="Python.stream_keyword" />
       </list>
     </recent_temporary>
@@ -411,13 +410,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/retweet.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="38" column="24" selection-start="1196" selection-end="1196" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1290">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/tweetbot.py">
       <provider selected="true" editor-type-id="text-editor">
         <state line="23" column="0" selection-start="646" selection-end="732" vertical-scroll-proportion="0.0" vertical-offset="61" max-vertical-offset="480">
@@ -429,10 +421,17 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/tweet_bible_verse.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="93" column="37" selection-start="4321" selection-end="4321" vertical-scroll-proportion="0.83827496" vertical-offset="1084" max-vertical-offset="1650">
+        <state line="12" column="0" selection-start="300" selection-end="350" vertical-scroll-proportion="-5.142857" vertical-offset="0" max-vertical-offset="1650">
           <folding>
             <element signature="e#0#27#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/retweet.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="9" column="19" selection-start="148" selection-end="148" vertical-scroll-proportion="0.2556818" vertical-offset="45" max-vertical-offset="885">
+          <folding />
         </state>
       </provider>
     </entry>

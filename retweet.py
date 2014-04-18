@@ -1,83 +1,54 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
 
+"""
+This process has a list of screen names and randomly
+"""
+
 import tweepy
 import os
 import ConfigParser
 import inspect
+import random
+import logging
+import time
 
-path = os.path.dirname(os.path.abspath(inspect.getfile(inspect.currentframe())))
+logging.basicConfig(filename='retweet.log', filemode='a', level=logging.DEBUG,
+                    format='%(asctime)s %(message)s', datefmt='%d %b %Y %H:%M:%S.%p')
 
-# read config
-config = ConfigParser.SafeConfigParser()
-config.read(os.path.join(path, "keys.config"))
+logging.info('*****  Process started  **********')
 
-# your hashtag or search query and tweet language (empty = all languages)
-hashtag = config.get("settings","search_query")
-tweetLanguage = config.get("settings","tweet_language")
+def getRandomSleepTime(min,max):
+    return random.randrange(min,max)
 
-# blacklisted users and words
-userBlacklist = []
-wordBlacklist = ["RT", u"♺"]
+config = ConfigParser.ConfigParser()
+config.readfp(open(r'keys.config'))
+consumer_key = config.get('key values', 'consumer_key')
+consumer_secret = config.get('key values', 'consumer_secret')
+access_token = config.get('key values', 'access_token')
+access_token_secret = config.get('key values', 'access_token_secret')
 
-# build savepoint path + file
-last_id_filename = "last_id_hashtag_%s" % hashtag.replace("#", "").split(" ")[0]
-rt_bot_path = os.path.dirname(os.path.abspath(__file__))
-last_id_file = os.path.join(rt_bot_path, last_id_filename)
-
-# create bot
-auth = tweepy.OAuthHandler(config.get("key values","consumer_key"), config.get("key values","consumer_secret"))
-auth.set_access_token(config.get("key values","access_token"), config.get("key values","access_token_secret"))
+auth = tweepy.OAuthHandler(consumer_key, consumer_secret)
+auth.set_access_token(access_token, access_token_secret)
 api = tweepy.API(auth)
 
-# retrieve last savepoint if available
-try:
-	with open(last_id_file, "r") as file:
-		savepoint = file.read()
-except IOError:
-	savepoint = ""
-	print "No savepoint found. Trying to get as many results as possible."
+screenNames = ['MaxLucado', 'TimTebow', 'JohnPiper', 'BishopJakes', 'RaviZacharias','plattdavid', 'FrankViola',
+               'LeeStrobel', 'JeffersonBethke', 'RickWarren']
 
-# search query
-timelineIterator = tweepy.Cursor(api.search, q=hashtag, since_id=savepoint, lang=tweetLanguage).items()
-
-# put everything into a list to be able to sort/filter
-timeline = []
-for status in timelineIterator:
-	timeline.append(status)
-
-try:
-    last_tweet_id = timeline[0].id
-except IndexError:
-    last_tweet_id = savepoint
-
-# filter @replies/blacklisted words & users out and reverse timeline
-timeline = filter(lambda status: status.text[0] != "@", timeline)
-timeline = filter(lambda status: not any(word in status.text.split() for word in wordBlacklist), timeline)
-timeline = filter(lambda status: status.author.screen_name not in userBlacklist, timeline)
-timeline.reverse()
-
-tw_counter = 0
-err_counter = 0
-
-# iterate the timeline and retweet
-for status in timeline:
-	try:
-		print "(%(date)s) %(name)s: %(message)s\n" % \
-			{ "date" : status.created_at,
-			"name" : status.author.screen_name.encode('utf-8'),
-			"message" : status.text.encode('utf-8') }
-
-		api.retweet(status.id)
-		tw_counter += 1
-	except tweepy.error.TweepError:
-		# just in case tweet got deleted in the meantime or already retweeted
-		err_counter += 1
-		continue
-
-print "Finished. %d Tweets retweeted, %d errors occured." % (tw_counter, err_counter)
-
-# write last retweeted tweet id to file
-with open(last_id_file, "w") as file:
-	file.write(str(last_tweet_id))
-
+while True:
+    try:
+        screenNameIndex = random.randrange(0,9)
+        logging.info('Random screen name index is ' + str(screenNameIndex) + ' which is user ' + screenNames[screenNameIndex])
+        retweetIndex = random.randrange(0,99)
+        logging.info('Random retweet index is ' + str(retweetIndex))
+        retweet = api.user_timeline(screenNames[screenNameIndex], include_rts=True, count=100)[retweetIndex]
+        logging.info('retweet text is: ' + retweet.text)
+        results = api.retweet(retweet.id)
+        logging.info('Successfully retweeted tweet')
+        #Get a random sleep time between a min and max seconds
+        sleepTime = getRandomSleepTime(300,1200)
+        logging.info('Next retweet to be sent in ' + str(sleepTime) + ' seconds')
+        time.sleep(sleepTime)
+    except Exception, e:
+        logging.error('exception: ' + str(e))
+        time.sleep(60) # sleep for 60 seconds on an error
