@@ -33,7 +33,8 @@ auth.set_access_token(access_token, access_token_secret)
 api = tweepy.API(auth)
 
 screenNames = ['MaxLucado', 'TimTebow', 'JohnPiper', 'BishopJakes', 'RaviZacharias','plattdavid', 'FrankViola',
-               'LeeStrobel', 'JeffersonBethke', 'RickWarren']
+               'LeeStrobel', 'JeffersonBethke', 'RickWarren', 'ChristianPost','MattWalshRadio', 'desiringgod',
+               'CSLewisDaily', 'kilmeade', 'TGC']
 
 while True:
     try:
