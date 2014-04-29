@@ -25,7 +25,7 @@ def ProcessIsNotAlreadyRunning():
 logging.basicConfig(filename='tweet_bible_verse.log', filemode='a', level=logging.DEBUG,
                     format='%(asctime)s %(message)s', datefmt='%d %b %Y %H:%M:%S.%p')
 
-logging.info('*****  Process started  **********')
+
 
 #List of words to hashtag
 hashTags = [ 'amazingword', 'Passover', 'father', 'Easter', 'scripture', 'theology', 'TheGospel',
@@ -133,6 +133,7 @@ if __name__ == "__main__":
         ctx = zmq.Context()
         s = ctx.socket(zmq.PUB)
         s.bind("tcp://*:5567")
+        logging.info('*****  Process started  **********')
         runTweetBibleVerse()
     else:
         print 'Process already running....'
